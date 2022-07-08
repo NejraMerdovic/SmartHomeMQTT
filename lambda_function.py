@@ -2,7 +2,6 @@ from ask_sdk_core.skill_builder import SkillBuilder
 
 sb = SkillBuilder()  # create skill builder object
 
-# ----------------------------------------------------------------------------------------------------------------------
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_request_type, is_intent_name, get_slot_value
 from ask_sdk_core.handler_input import HandlerInput
@@ -20,7 +19,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         speech_text = "Welcome to your custom alexa application!"
         handler_input.response_builder.speak(speech_text).set_card(SimpleCard("Hello World", speech_text)).set_should_end_session(False)
         return handler_input.response_builder.response  # The handle function generates and returns a basic greeting response
-# -----------------------------------------------------------------------------------------------------------------------
+
 import paho.mqtt.client as mqtt
 import time
 
@@ -47,7 +46,7 @@ class SwitchDeviceOnOffIntentHandler(AbstractRequestHandler):
             SimpleCard("Message1", speech_text)).set_should_end_session(
             False)
         return handler_input.response_builder.response
-#-----------------------------------------------------------------------------------------------------------------------
+
 class SetColorIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -70,7 +69,7 @@ class SetColorIntentHandler(AbstractRequestHandler):
             SimpleCard("Message2", speech_text)).set_should_end_session(
             False)
         return handler_input.response_builder.response
-#-----------------------------------------------------------------------------------------------------------------------ž
+
 class PWMIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -94,7 +93,7 @@ class PWMIntentHandler(AbstractRequestHandler):
             SimpleCard("Message3", speech_text)).set_should_end_session(
             False)
         return handler_input.response_builder.response
-#------------------------------------------------------------------------------------------------------------------------
+
 class HelpIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -107,7 +106,7 @@ class HelpIntentHandler(AbstractRequestHandler):
         handler_input.response_builder.speak(speech_text).ask(speech_text).set_card(
             SimpleCard("Hello World", speech_text))
         return handler_input.response_builder.response
-# -----------------------------------------------------------------------------------------------------------------------
+
 class CancelAndStopIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -121,7 +120,7 @@ class CancelAndStopIntentHandler(AbstractRequestHandler):
         handler_input.response_builder.speak(speech_text).set_card(
             SimpleCard("Hello World", speech_text)).set_should_end_session(True)
         return handler_input.response_builder.response
-# -----------------------------------------------------------------------------------------------------------------------
+
 class SessionEndedRequestHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -132,7 +131,7 @@ class SessionEndedRequestHandler(AbstractRequestHandler):
         # any cleanup logic goes here
 
         return handler_input.response_builder.response
-# -----------------------------------------------------------------------------------------------------------------------
+
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 
 class AllExceptionHandler(AbstractExceptionHandler):
@@ -149,7 +148,7 @@ class AllExceptionHandler(AbstractExceptionHandler):
         speech = "Sorry, I didn't get it. Can you please say it again!!"
         handler_input.response_builder.speak(speech).ask(speech)
         return handler_input.response_builder.response
-# -----------------------------------------------------------------------------------------------------------------------
+
 sb.add_request_handler(LaunchRequestHandler())  # Creating the Lambda handler
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelAndStopIntentHandler())
